@@ -15,6 +15,7 @@ import connectToDb from "./db/connect";
 // const session = require("express-session");
 
 //routes
+import user from "./routes/user.routes";
 
 const port = config.serverPort;
 logger.stream = {
@@ -34,6 +35,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(morgan("dev", { stream: logger.stream }));
+
+app.use("/api/user", user);
 
 // Index route
 app.get("/", (req, res) => {

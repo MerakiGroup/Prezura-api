@@ -1,0 +1,3 @@
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-09T16:05:39.712Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-09T16:06:07.502Z"}
+{"level":"info","message":"\u001b[0mGET /api/user/signup \u001b[33m404 \u001b[0m4.347 ms - 28\u001b[0m\n","timestamp":"2018-03-09T16:07:35.463Z"}
