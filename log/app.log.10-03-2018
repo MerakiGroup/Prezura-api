@@ -1,0 +1,24 @@
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T10:41:00.635Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T10:45:30.971Z"}
+{"level":"info","message":"\u001b[0mGET / \u001b[32m200 \u001b[0m4.943 ms - 17\u001b[0m\n","timestamp":"2018-03-10T10:45:40.252Z"}
+{"level":"info","message":"\u001b[0mGET /favicon.ico \u001b[33m404 \u001b[0m1.363 ms - 24\u001b[0m\n","timestamp":"2018-03-10T10:45:40.625Z"}
+{"level":"info","message":"\u001b[0mPOST /signUp \u001b[33m404 \u001b[0m0.247 ms - 20\u001b[0m\n","timestamp":"2018-03-10T10:47:52.429Z"}
+{"level":"info","message":"\u001b[0mPOST /signup \u001b[33m404 \u001b[0m0.101 ms - 20\u001b[0m\n","timestamp":"2018-03-10T10:48:04.373Z"}
+{"level":"info","message":"\u001b[0mPOST /api/user/signup \u001b[31m500 \u001b[0m3.790 ms - 49\u001b[0m\n","timestamp":"2018-03-10T10:49:06.998Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T10:51:48.666Z"}
+{"level":"info","message":"\u001b[0mPOST /api/user/signup \u001b[31m500 \u001b[0m7.563 ms - 27\u001b[0m\n","timestamp":"2018-03-10T10:51:53.361Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T10:52:09.584Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T10:52:13.462Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T10:52:18.662Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T10:52:25.083Z"}
+{"level":"info","message":"\u001b[0mPOST /api/user/signup \u001b[0m- \u001b[0m- ms - -\u001b[0m\n","timestamp":"2018-03-10T10:52:31.028Z"}
+{"level":"info","message":"\u001b[0mPOST /api/user/signup \u001b[0m- \u001b[0m- ms - -\u001b[0m\n","timestamp":"2018-03-10T10:54:32.450Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T11:03:57.074Z"}
+{"level":"info","message":"\u001b[0mPOST /api/user/signup \u001b[31m500 \u001b[0m6.061 ms - 27\u001b[0m\n","timestamp":"2018-03-10T11:04:07.368Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T11:04:57.517Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T11:04:59.607Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T11:05:04.973Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T11:05:06.603Z"}
+{"level":"info","message":"\u001b[0mPOST /api/user/signup \u001b[31m500 \u001b[0m11.020 ms - 27\u001b[0m\n","timestamp":"2018-03-10T11:05:10.111Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-10T11:06:43.031Z"}
+{"level":"info","message":"\u001b[0mPOST /api/user/signup \u001b[0m- \u001b[0m- ms - -\u001b[0m\n","timestamp":"2018-03-10T11:08:50.226Z"}

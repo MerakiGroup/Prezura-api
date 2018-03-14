@@ -1,0 +1,16 @@
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:28:43.906Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:31:09.462Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:31:12.759Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:31:33.061Z"}
+{"level":"info","message":"\u001b[0mGET /socket.io/?EIO=3&transport=polling&t=M8b98cP \u001b[33m404 \u001b[0m2.882 ms - 65\u001b[0m\n","timestamp":"2018-03-14T15:32:54.969Z"}
+{"level":"info","message":"\u001b[0mGET /socket.io/?EIO=3&transport=polling&t=M8b991_ \u001b[33m404 \u001b[0m0.444 ms - 65\u001b[0m\n","timestamp":"2018-03-14T15:32:56.677Z"}
+{"level":"info","message":"\u001b[0mGET /socket.io/?EIO=3&transport=polling&t=M8b99c1 \u001b[33m404 \u001b[0m0.364 ms - 65\u001b[0m\n","timestamp":"2018-03-14T15:32:58.960Z"}
+{"level":"info","message":"\u001b[0mGET /socket.io/?EIO=3&transport=polling&t=M8b9Ala \u001b[33m404 \u001b[0m0.148 ms - 65\u001b[0m\n","timestamp":"2018-03-14T15:33:03.678Z"}
+{"level":"info","message":"\u001b[0mGET /socket.io/?EIO=3&transport=polling&t=M8b9A_k \u001b[33m404 \u001b[0m0.193 ms - 65\u001b[0m\n","timestamp":"2018-03-14T15:33:04.700Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:33:19.876Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:34:55.036Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:35:01.807Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:35:31.830Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:36:11.658Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:38:23.784Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-14T15:38:52.723Z"}
