@@ -50,14 +50,21 @@ server.listen(port, () => {
 });
 
 socketio.on("connection", socket => {
+  let connected = true;
   console.log("joined");
   socket.on("disconnect", () => {
+    connected = false;
     socketio.emit("disconnected", { user: "user-disconnected" });
+    console.log("Disconnected");
   });
 
-  setInterval(() => {
-    socketio.emit("data", { data: generatePoints() });
-    console.log("sent");
+  const intervalID = setInterval(() => {
+    if (connected) {
+      socketio.emit("data", { data: generatePoints() });
+      console.log("Heat map data sent");
+    } else {
+      clearInterval(intervalID);
+    }
   }, 1200);
 });
 
