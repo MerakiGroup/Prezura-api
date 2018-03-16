@@ -1,0 +1,6 @@
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-16T17:43:25.288Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-16T17:44:37.301Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-16T17:45:22.611Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-16T17:46:02.531Z"}
+{"level":"info","message":"\u001b[0mGET /api/mock/alerts \u001b[32m200 \u001b[0m2.992 ms - 94\u001b[0m\n","timestamp":"2018-03-16T17:46:28.561Z"}
+{"level":"info","message":"server started -  3000","timestamp":"2018-03-16T17:47:18.261Z"}

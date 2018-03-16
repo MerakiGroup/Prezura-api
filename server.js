@@ -16,6 +16,7 @@ import connectToDb from "./db/connect";
 
 //routes
 import user from "./routes/user.routes";
+import mock from "./routes/mockdata.routes";
 
 const port = config.serverPort;
 logger.stream = {
@@ -39,6 +40,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(morgan("dev", { stream: logger.stream }));
 
 app.use("/api/user", user);
+app.use("/api/mock", mock);
 
 // Index route
 app.get("/", (req, res) => {
