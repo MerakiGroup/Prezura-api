@@ -58,14 +58,34 @@ socketio.on("connection", socket => {
     console.log("Disconnected");
   });
 
-  const intervalID = setInterval(() => {
-    if (connected) {
-      socketio.emit("data", { data: generatePoints() });
-      console.log("Heat map data sent");
-    } else {
-      clearInterval(intervalID);
-    }
-  }, 1200);
+  socket.on("getData", () => {
+    const intervalID = setInterval(() => {
+      if (connected) {
+        socketio.emit("data", { data: generatePoints() });
+        console.log("Heat map data sent");
+      } else {
+        clearInterval(intervalID);
+      }
+    }, 1200);
+  });
+
+  socket.on("getPressureData", () => {
+    const intervalID = setInterval(() => {
+      if (connected) {
+        const label = getDateTimeString();
+        const left = getRandomInt(100);
+        const right = getRandomInt(100);
+        const data = {
+          left,
+          right
+        };
+        socketio.emit("pressureDiff", { data, label });
+        console.log("Pressure diff data sent");
+      } else {
+        clearInterval(intervalID);
+      }
+    }, 1800);
+  });
 });
 
 let generatePoints = () => {
@@ -84,3 +104,8 @@ let generatePoints = () => {
 let getRandomInt = max => {
   return Math.floor(Math.random() * Math.floor(max));
 };
+
+let getDateTimeString = () => {
+  const date = new Date();
+  return `${date.getHours()} : ${date.getMinutes()}: ${date.getSeconds()}`;
+}
