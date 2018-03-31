@@ -1,21 +1,21 @@
-import express from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import morgan from "morgan";
-import passport from "passport";
-import swaggerJSDoc from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
-import http from "http";
-import io from "socket.io";
-import logger from "./core/logger/app-logger";
-import session from "express-session";
-import config from "./core/config/config.dev";
-import connectToDb from "./db/connect";
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import morgan from 'morgan';
+import passport from 'passport';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import http from 'http';
+import io from 'socket.io';
+import logger from './core/logger/app-logger';
+import session from 'express-session';
+import config from './core/config/config.dev';
+import connectToDb from './db/connect';
 
 // const session = require("express-session");
 
 //routes
-import user from "./routes/user.routes";
+import user from './routes/user.routes';
 
 const port = config.serverPort;
 logger.stream = {
@@ -30,46 +30,47 @@ const app = express();
 const server = http.createServer(app);
 const socketio = io.listen(server);
 
-app.use(session({ secret: "prezuracx" })); // session secret
+app.use(session({ secret: 'prezuracx' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-app.use(morgan("dev", { stream: logger.stream }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(morgan('dev', { stream: logger.stream }));
 
-app.use("/api/user", user);
+app.use('/api/user', user);
 
 // Index route
-app.get("/", (req, res) => {
-  res.send("Invalid endpoint!");
+app.get('/', (req, res) => {
+  res.send('Invalid endpoint!');
 });
 
 server.listen(port, () => {
-  logger.info("server started - ", port);
+  logger.info('server started - ', port);
 });
 
-socketio.on("connection", socket => {
+socketio.on('connection', socket => {
+  console.log(socket);
   let connected = true;
-  console.log("joined");
-  socket.on("disconnect", () => {
+  console.log('joined');
+  socket.on('disconnect', () => {
     connected = false;
-    socketio.emit("disconnected", { user: "user-disconnected" });
-    console.log("Disconnected");
+    socketio.emit('disconnected', { user: 'user-disconnected' });
+    console.log('Disconnected');
   });
 
-  socket.on("getData", () => {
+  socket.on('getData', () => {
     const intervalID = setInterval(() => {
       if (connected) {
-        socketio.emit("data", { data: generatePoints() });
-        console.log("Heat map data sent");
+        socketio.emit('data', { data: generatePoints() });
+        console.log('Heat map data sent');
       } else {
         clearInterval(intervalID);
       }
     }, 1200);
   });
 
-  socket.on("getPressureData", () => {
+  socket.on('getPressureData', () => {
     const intervalID = setInterval(() => {
       if (connected) {
         const label = getDateTimeString();
@@ -79,8 +80,8 @@ socketio.on("connection", socket => {
           left,
           right
         };
-        socketio.emit("pressureDiff", { data, label });
-        console.log("Pressure diff data sent");
+        socketio.emit('pressureDiff', { data, label });
+        console.log('Pressure diff data sent');
       } else {
         clearInterval(intervalID);
       }
@@ -93,7 +94,7 @@ let generatePoints = () => {
 
   for (let i = 0; i < 500; i++) {
     points.push({
-      value: getRandomInt(5),
+      value: getRandomInt(255),
       x: getRandomInt(600),
       y: getRandomInt(600)
     });
@@ -108,4 +109,4 @@ let getRandomInt = max => {
 let getDateTimeString = () => {
   const date = new Date();
   return `${date.getHours()} : ${date.getMinutes()}: ${date.getSeconds()}`;
-}
+};
