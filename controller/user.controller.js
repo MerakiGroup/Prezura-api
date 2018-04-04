@@ -1,6 +1,7 @@
 import cognitoService from "../services/cognito.services";
 import UserModel from "../models/user.model";
 import commondbService from "../services/commondb.service";
+import userService from "../services/user.service";
 
 import logger from "../core/logger/app-logger";
 
@@ -28,6 +29,16 @@ userController.signup = async (req, res) => {
       return;
     }
     res.status(500).json({ error: true, message: "Error occurred from DB" });
+  }
+};
+
+userController.getUserById = async (req, res) => {
+  try {
+    const user = await userService.getUserById(UserModel, req.params.id);
+    res.status(200).json({ error: false, data: user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: true, message: error });
   }
 };
 

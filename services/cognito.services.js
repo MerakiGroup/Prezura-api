@@ -8,13 +8,10 @@ import config from "../core/config/config.aws";
 const cognitoService = {};
 
 cognitoService.signUp = (username, password) => {
-  console.log("dsds", username);
   const userPool = new CognitoUserPool({
     UserPoolId: config.AWS.Cognito.userPoolId,
     ClientId: config.AWS.Cognito.clientId
   });
-  console.log("dsds", username);
-
   const attributeEmail = new CognitoUserAttribute({
     Name: "email",
     Value: username

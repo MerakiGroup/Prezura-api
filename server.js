@@ -30,6 +30,12 @@ const app = express();
 const server = http.createServer(app);
 const socketio = io.listen(server);
 
+app.use(filter());
+
+app.use(helmet.xssFilter());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.noSniff());
+
 app.use(session({ secret: "prezuracx" })); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
@@ -50,6 +56,7 @@ server.listen(port, () => {
 });
 
 socketio.on("connection", socket => {
+  console.log(socket);
   let connected = true;
   console.log("joined");
   socket.on("disconnect", () => {
@@ -93,7 +100,7 @@ let generatePoints = () => {
 
   for (let i = 0; i < 500; i++) {
     points.push({
-      value: getRandomInt(5),
+      value: getRandomInt(255),
       x: getRandomInt(600),
       y: getRandomInt(600)
     });
@@ -108,4 +115,4 @@ let getRandomInt = max => {
 let getDateTimeString = () => {
   const date = new Date();
   return `${date.getHours()} : ${date.getMinutes()}: ${date.getSeconds()}`;
-}
+};
