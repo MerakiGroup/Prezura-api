@@ -12,7 +12,8 @@
     "serve": "node dist/server.js",
     "start_babel": "babel-node ./server.js --preset=babel-preset-es2015",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "mocha tests"
   },
   "author": "devuplink",
   "dependencies": {
@@ -25,6 +26,7 @@
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.1.1",
     "lodash": "^4.15.0",
+    "mocha": "^5.0.5",
     "mongoose": "^4.8.6",
     "morgan": "^1.8.2",
     "node-fetch": "^2.1.1",
