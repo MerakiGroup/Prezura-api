@@ -12,6 +12,9 @@ import session from "express-session";
 import config from "./core/config/config.dev";
 import connectToDb from "./db/connect";
 import { Server } from "ws";
+import commondbService from "./services/commondb.service";
+
+import PressureDataModel from "./models/pressure.model";
 
 const wss = new Server({ port: 7171 });
 
@@ -19,6 +22,7 @@ const wss = new Server({ port: 7171 });
 
 //routes
 import user from "./routes/user.routes";
+import data from "./routes//data.routes";
 
 const port = config.serverPort;
 logger.stream = {
@@ -48,6 +52,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(morgan("dev", { stream: logger.stream }));
 
 app.use("/api/user", user);
+app.use("/api/data", data);
 
 // Index route
 app.get("/", (req, res) => {
@@ -61,41 +66,92 @@ server.listen(port, () => {
 let clients = [];
 
 wss.on("connection", function connection(ws, req) {
-  const ip = req.connection.remoteAddress;
+  const val = 4;
+
+  let thumbValue = 0;
+  let leftValue = 0;
+  let rightValue = 0;
+  let dummyValue = 0;
+  let heelValue = 0;
+
   ws.on("message", data => {
     console.log("67890", data);
+
+    const pressureData = [];
+
+    const dataArray = JSON.parse(data);
+    thumbValue = dataArray[0] / val;
+    // }
+
+    // if (leftValue < dataArray[1] * val) {
+    leftValue = dataArray[1] / val;
+    // }
+
+    // if (rightValue < dataArray[2] * val) {
+    rightValue = dataArray[2] / val;
+    // }
+
+    // if (heelValue < dataArray[3] * val) {
+    heelValue = dataArray[3] / val;
+    // }
+
+    dummyValue = (leftValue + rightValue) / 2.5;
+    pressureData.push({
+      //thumb
+      value: thumbValue,
+      x: 120,
+      y: 40
+    });
+
+    pressureData.push({
+      //left
+      value: leftValue,
+
+      x: 40,
+      y: 100
+    });
+
+    pressureData.push({
+      // right
+      // value: dataArray[2] * 4,
+      value: rightValue,
+      x: 100,
+      y: 90
+    });
+
+    pressureData.push({
+      // heel
+      // value: dataArray[3] * 4,
+      value: heelValue,
+      x: 80,
+      y: 230
+    });
+    try {
+      commondbService.add(PressureDataModel, { data: pressureData });
+      console.log("saved");
+    } catch (err) {
+      console.log(err);
+    }
+
     for (let i = 0; i < clients.length; i++) {
-      const dataArray = JSON.parse(data);
+      // if (thumbValue < dataArray[0] / val && dataArray[0] > 200) {
 
-      const pressureData = [];
       // for (let i = 0; i < dataArray.length; i++) {
-      pressureData.push({
-        value: dataArray[0] / 4,
-        x: 60,
-        y: 200
-      });
 
-      pressureData.push({
-        value: dataArray[1] / 4,
-        x: 40,
-        y: 100
-      });
-
-      pressureData.push({
-        value: dataArray[2] / 4,
-        x: 80,
-        y: 90
-      });
-
-      pressureData.push({
-        value: dataArray[3] / 4,
-        x: 60,
-        y: 150
-      });
+      console.log(JSON.stringify(pressureData));
       // }
+
+      pressureData.push({
+        // dummy
+        // value: dataArray[2] * 4,
+        value: dummyValue,
+        x: 70,
+        y: 105
+      });
       clients[i].emit("data", {
         data: pressureData
       });
+
       // console.log("data", data);
     }
   });
